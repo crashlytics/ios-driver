@@ -226,39 +226,40 @@ UIAElement.prototype.scrollToVisible = function () {
  * Trying to scroll to the element seems like a valid approximation.
  */
 UIAElement.prototype.isStale = function () {
-    if (this.checkIsValid() == false) {
-        return true;
-    } else {
-        try {
-            this.scrollToVisible();
-            // tmp fix for safari and big web views.
-            if (this.type() === "UIAWebView") {
-                return false;
-            }
-            /*if (this.isVisible()) {
-             return false;
-             } else {
-             return true;
-             }*/
-            var parent = this.parent();
-            /*while (parent.parent() && parent.parent().type() !== "UIAElementNil") {
-             parent = parent.parent();
-             log("parent  " + parent.type() + ", " + parent.name());
-
-             }*/
-            return false;
-        } catch (err) {
-            if (err.message && err.message.indexOf('scrollToVisible cannot be used') != -1) {
-                log("F");
-                return true;
-            } else {
-                log("NI");
-                log(err)
-            }
-        }
-    }
-    log("G");
-    return false;
+      return !this.checkIsValid();
+//    if (this.checkIsValid() == false) {
+//        return true;
+//    } else {
+//        try {
+//            this.scrollToVisible();
+//            // tmp fix for safari and big web views.
+//            if (this.type() === "UIAWebView") {
+//                return false;
+//            }
+//            /*if (this.isVisible()) {
+//             return false;
+//             } else {
+//             return true;
+//             }*/
+//            var parent = this.parent();
+//            /*while (parent.parent() && parent.parent().type() !== "UIAElementNil") {
+//             parent = parent.parent();
+//             log("parent  " + parent.type() + ", " + parent.name());
+//
+//             }*/
+//            return false;
+//        } catch (err) {
+//            if (err.message && err.message.indexOf('scrollToVisible cannot be used') != -1) {
+//                log("F");
+//                return true;
+//            } else {
+//                log("NI");
+//                log(err)
+//            }
+//        }
+//    }
+//    log("G");
+//    return false;
 }
 
 UIAElement.prototype.element_or = function (depth, criteria) {

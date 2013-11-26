@@ -157,7 +157,7 @@ public class RemoteUIAElementTest extends BaseIOSDriverTest {
 
 
   // TODO freynaud find a test for stale.
-  @Test(expectedExceptions = StaleElementReferenceException.class, enabled = false)
+  @Test(expectedExceptions = StaleElementReferenceException.class)
   public void staleElement() {
     try {
       String name = "Buttons, Various uses of UIButton";
@@ -169,8 +169,11 @@ public class RemoteUIAElementTest extends BaseIOSDriverTest {
       // new screen. The element doesn't exist anymore
       element.tap();
 
+
       // that doesn't throw. The element isn't visible, but it's still accessible with UIAutomation.
+      // it returns null, which is a valid value for attribute not set. It should throw instead.
       String s = element.getName();
+      System.out.println("accessing element that is not here any more : "+s);
       Assert.fail("cannot access stale elements");
     } finally {
       UIAButton
