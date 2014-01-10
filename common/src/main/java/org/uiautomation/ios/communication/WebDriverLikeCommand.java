@@ -59,7 +59,7 @@ public enum WebDriverLikeCommand {
 
 
   // DELETE  /session/:sessionId/window
-  // POST /session/:sessionId/window/:windowHandle/size
+  SET_WINDOW_SIZE("POST", "/session/:sessionId/window/:windowHandle/size", Void.class),
   WINDOW_SIZE("GET", "/session/:sessionId/window/:windowHandle/size", Dimension.class),
   // POST /session/:sessionId/window/:windowHandle/position
   // GET /session/:sessionId/window/:windowHandle/position

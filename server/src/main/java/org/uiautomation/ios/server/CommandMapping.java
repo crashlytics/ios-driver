@@ -74,6 +74,7 @@ public enum CommandMapping {
 
 
   WINDOW_SIZE(GetScreenSizeNHandler.class, GetPageSizeHandler.class),
+  SET_WINDOW_SIZE(NotImplementedNativeHandler.class, SetPageSizeHandler.class),
   GET_SCREENRECT(GetScreenSizeNHandler.class),
 
   SCREENSHOT(TakeScreenshotNHandler.class),

@@ -56,7 +56,8 @@ public class SetValueHandler extends BaseWebCommandHandler {
       useNativeEvents = false;
     }
 
-    if (useNativeEvents && (element instanceof RemoteWebNativeBackedElement)) {
+    // "Native" doesn't work when trying to send keys after each other, it closes the keyboard
+    if (useNativeEvents && (element instanceof RemoteWebNativeBackedElement) && false) {
       ((RemoteWebNativeBackedElement) element).setValueNative(value);
     } else {
       element.setValueAtoms(value);
