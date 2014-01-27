@@ -88,6 +88,7 @@ public class InstrumentsApple implements Instruments {
     deviceManager = new IOSSimulatorManager(caps, this);
 
     instruments = createInstrumentCommand(scriptPath);
+    log.info("INSTRUMENTS COMMAND: " + instruments.commandString());
     instruments.registerListener(new ApplicationCrashListener(session));
     instruments.setWorkingDirectory(output);
 
@@ -194,6 +195,7 @@ public class InstrumentsApple implements Instruments {
       args.add("-w");
       args.add(deviceManager.getDeviceSpecification(caps.getDevice(), caps.getDeviceVariation()));
     }
+    args.add("-v");
     args.add("-t");
     args.add(template.getAbsolutePath());
     args.add(application.getDotAppAbsolutePath());
